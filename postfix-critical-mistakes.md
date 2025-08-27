@@ -1,69 +1,63 @@
----
-layout: default
-title: "5 критических ошибок при настройке Postfix"
-description: "Разбираем самые частые ошибки конфигурации Postfix, которые убивают репутацию домена и отправляют письма в спам. Проверенные решения с реального опыта."
----
+# Critical Postfix Mistakes That Kill Your Domain Reputation
 
-# 5 критических ошибок при настройке Postfix, которые убивают репутацию домена
+After 13+ years of managing enterprise email systems, I've seen how poor Postfix configuration turns corporate email into a nightmare. Emails land in spam, domains get blacklisted, businesses lose customers.
 
-За 15+ лет администрирования почтовых систем я видел, как неправильная настройка Postfix превращает корпоративную почту в головную боль. Письма попадают в спам, домен блокируется, бизнес теряет клиентов.
+Here are the 5 most critical mistakes I encounter regularly:
 
-Вот 5 самых критичных ошибок, которые я встречаю постоянно:
+## 1️⃣ Missing Proper PTR Record (Reverse DNS)
 
-## 1️⃣ Отсутствие правильного PTR-записи (reverse DNS)
+**The Problem:** 90% of administrators forget to configure reverse DNS for their mail server.
 
-**Проблема:** 90% администраторов забывают настроить обратную DNS-запись для своего mail-сервера.
+**Why it's critical:**
+• Gmail and Outlook automatically spam emails without proper PTR records
+• Many corporate filters block emails without PTR entirely
 
-**Почему это критично:**
-- Gmail и Outlook автоматически отправляют такие письма в спам
-- Многие корпоративные фильтры блокируют письма без PTR
-
-**Правильное решение:**
+**The solution:**
 ```bash
-# Проверяем текущую PTR-запись
+# Check your current PTR record
 dig -x YOUR_SERVER_IP
 
-# Должно возвращать ваш mail-домен
+# Should return your mail domain
 # mail.company.com.
 ```
 
-**Лайфхак:** PTR-запись должна точно совпадать с HELO/EHLO именем в Postfix. Никаких "server1.hosting.com" - только ваш реальный mail-домен.
+**Pro tip:** PTR record must exactly match the HELO/EHLO name in Postfix. No "server1.hosting.com" shortcuts - only your real mail domain.
 
 ---
 
-## 2️⃣ Неправильная настройка SPF/DKIM/DMARC
+## 2️⃣ Broken SPF/DKIM/DMARC Setup
 
-**Самая частая ошибка:** "Настроил SPF, этого достаточно."
+**Most common mistake:** "I configured SPF, that's enough."
 
-**НЕТ!** В 2025 году это тройка обязательных записей:
+**Wrong!** In 2025, this is a trinity of required records:
 
-**SPF (слишком строгий):**
-```dns
+**SPF (too restrictive):**
+```
 ❌ v=spf1 ip4:YOUR_IP -all
 ✅ v=spf1 ip4:YOUR_IP include:_spf.google.com ~all
 ```
 
-**DKIM (забывают ротацию ключей):**
+**DKIM (forgetting key rotation):**
 ```bash
-# Генерируем новый ключ каждые 6 месяцев
+# Generate new key every 6 months
 opendkim-genkey -t -s mail -d yourdomain.com
 ```
 
-**DMARC (начинают с p=reject):**
-```dns
-❌ Сразу p=reject - блокирует легитимные письма
-✅ Начинаем с p=none, анализируем отчеты месяц, затем p=quarantine
+**DMARC (starting with p=reject):**
+```
+❌ Immediate p=reject - blocks legitimate emails
+✅ Start with p=none, analyze reports for a month, then p=quarantine
 ```
 
 ---
 
-## 3️⃣ Игнорирование Postscreen
+## 3️⃣ Ignoring Postscreen
 
-**Типичная ситуация:** "У нас есть SpamAssassin, зачем еще что-то?"
+**Typical situation:** "We have SpamAssassin, why need more?"
 
-Postscreen отсекает 80% спама ДО обработки SpamAssassin'ом, экономя ресурсы сервера.
+**Reality:** Postscreen blocks 80% of spam BEFORE SpamAssassin processing, saving massive server resources.
 
-**Критичные настройки:**
+**Critical settings:**
 ```bash
 # main.cf
 postscreen_access_list = permit_mynetworks,
@@ -74,86 +68,114 @@ postscreen_dnsbl_threshold = 2
 postscreen_greet_action = enforce
 ```
 
-**Результат:** Нагрузка на сервер снижается в 5-10 раз.
+**Result:** Server load drops 5-10x. Your infrastructure team will thank you.
 
 ---
 
-## 4️⃣ Неправильная работа с серыми списками (Greylisting)
+## 4️⃣ Wrong Greylisting Configuration
 
-**Ошибка новичков:** Включают Postgrey с настройками по умолчанию.
+**Rookie mistake:** Installing Postgrey with default settings.
 
-**Проблема:** Задержка важных писем на 5+ минут убивает UX.
+**The problem:** 5+ minute delays kill user experience for important emails.
 
-**Мой подход:**
+**My approach:**
 ```bash
-# Сокращаем время задержки
-postgrey_delay = 60  # вместо 300 секунд
+# Reduce delay time
+postgrey_delay = 60  # instead of 300 seconds
 
-# Добавляем whitelist для крупных провайдеров
+# Add whitelist for major providers
 # /etc/postgrey/whitelist_clients.local
 gmail.com
 outlook.com  
 mailchimp.com
 ```
 
-**Продвинутая техника:** Настраиваю динамический whitelist на основе reputation score отправителя.
+**Advanced technique:** Configure dynamic whitelist based on sender reputation score.
 
 ---
 
-## 5️⃣ Отсутствие мониторинга queue и reputation
+## 5️⃣ Zero Queue and Reputation Monitoring
 
-**Критичная ошибка:** "Почта работает, мониторить нечего."
+**Critical mistake:** "Email works, nothing to monitor."
 
-**Реальность:** Проблемы с репутацией развиваются постепенно и незаметно.
+**Reality:** Reputation issues develop gradually and silently.
 
-**Что я мониторю обязательно:**
-- Размер очереди (queue): `mailq | tail -1`
-- Bounce rate: не более 5%
-- Blacklist status: проверяю через MXToolbox API
-- DMARC отчеты: анализирую еженедельно
+**What I monitor religiously:**
+• Queue size: `mailq | tail -1`
+• Bounce rate: keep under 5%
+• Blacklist status: check via MXToolbox API
+• DMARC reports: analyze weekly
 
-**Мой скрипт для Telegram-уведомлений:**
+---
+
+## 6️⃣ Weak TLS Configuration
+
+**Dangerous oversight:** Using default TLS settings from 2015.
+
+**The problem:** Modern email providers reject weak encryption. Gmail, Office365 require TLS 1.2+ with strong ciphers.
+
+**My TLS hardening:**
 ```bash
-#!/bin/bash
-QUEUE_SIZE=$(mailq | tail -1 | awk '{print $5}')
-if [ "$QUEUE_SIZE" -gt 100 ]; then
-    curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
-    -d chat_id="$CHAT_ID" \
-    -d text="⚠️ Mail queue: $QUEUE_SIZE messages"
-fi
+# main.cf - enforce strong TLS
+smtpd_tls_security_level = may
+smtpd_tls_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1
+smtpd_tls_ciphers = high
+smtpd_tls_exclude_ciphers = aNULL, eNULL, EXPORT, DES, RC4, MD5, PSK, SRP, CAMELLIA, SEED
 ```
 
----
-
-## 💡 Бонус: Быстрая диагностика проблем
-
-Когда клиент жалуется "почта не доходит", я проверяю в таком порядке:
-
-1. **Логи Postfix:** `tail -f /var/log/mail.log`
-2. **DNS-записи:** `dig MX domain.com` + `dig TXT domain.com`
-3. **Blacklist status:** Проверяю IP в основных RBL
-4. **Test email:** Отправляю на mail-tester.com
-5. **DMARC отчеты:** Ищу паттерны в неудачных доставках
-
-**Результат:** 90% проблем диагностирую за 10 минут.
+**Result:** Eliminates "TLS negotiation failed" bounces that kill deliverability.
 
 ---
 
-## Заключение
+## 7️⃣ Missing Rate Limiting
 
-Настройка корпоративной почты — это не "поставил и забыл". Это постоянный мониторинг, анализ и оптимизация.
+**Critical mistake:** No protection against compromised accounts or scripts.
 
-**Мой чек-лист для каждого нового mail-сервера:**
-- ✅ PTR-запись настроена  
-- ✅ SPF/DKIM/DMARC работают  
-- ✅ Postscreen активен  
-- ✅ Greylisting настроен разумно  
-- ✅ Мониторинг всех метрик  
+**What happens:** One compromised account sends 10K emails/hour → instant IP blacklist → ALL company email blocked.
 
-Соблюдение этих правил гарантирует deliverability 99%+ и спокойный сон администратора.
+**My protection layers:**
+```bash
+# main.cf - rate limiting
+smtpd_client_connection_count_limit = 10
+smtpd_client_message_rate_limit = 100
+smtpd_client_recipient_rate_limit = 200
+```
+
+**Real case:** Saved a client from 3-day Spamhaus blacklist when their WordPress got hacked.
 
 ---
 
-**А какие проблемы с почтовыми серверами встречались у вас? Поделитесь в [Issues](https://github.com/Anton-Babaskin/github.io-guides/issues)!**
+## 💡 BONUS: Quick Problem Diagnosis
 
-*#Linux #Postfix #EmailSecurity #SystemAdmin #ITInfrastructure*
+When clients complain "emails aren't delivering," I check in this order:
+
+1. **Postfix logs:** `tail -f /var/log/mail.log`
+2. **DNS records:** `dig MX domain.com` + `dig TXT domain.com`
+3. **Blacklist status:** Check IP in major RBLs
+4. **Email test:** Send to mail-tester.com
+5. **DMARC reports:** Look for failure patterns
+
+**Result:** I diagnose 90% of problems within 10 minutes.
+
+---
+
+## 🎯 Bottom Line
+
+Corporate email setup isn't "set and forget." It requires constant monitoring, analysis, and optimization.
+
+**My checklist for every new mail server:**
+✅ PTR record configured  
+✅ SPF/DKIM/DMARC working  
+✅ Postscreen active  
+✅ Greylisting configured smartly  
+✅ All metrics monitored  
+
+Following these rules guarantees 99%+ deliverability and peaceful nights for your entire team.
+
+---
+
+**What email server challenges have you faced? Share your experiences in the comments.**
+
+📖 **Read the complete technical guide:** https://github.com/Anton-Babaskin/github.io-guides-/blob/main/postfix-critical-mistakes.md
+
+*#SystemAdministration #Postfix #EmailSecurity #ITInfrastructure #DevOps #LinuxAdmin*
