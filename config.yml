@@ -1,0 +1,109 @@
+# Site settings
+title: "SysAdmin Guides by Anton Babaskin"
+description: "Практические руководства по Linux системному администрированию. Реальные решения для production-серверов."
+baseurl: "/guides"
+url: "https://anton-babaskin.github.io"
+
+# Author info
+author:
+  name: "Anton Babaskin"
+  email: "anton@example.com"
+  github: "Anton-Babaskin"
+  telegram: "your_telegram"
+  bio: "Linux & DevOps Engineer с 15+ летним опытом"
+  location: "Ukraine"
+
+# SEO settings
+lang: ru
+timezone: Europe/Kiev
+
+# Social media
+social:
+  - name: GitHub
+    icon: fab fa-github
+    url: https://github.com/Anton-Babaskin
+  - name: Telegram
+    icon: fab fa-telegram
+    url: https://t.me/your_telegram
+  - name: LinkedIn
+    icon: fab fa-linkedin
+    url: https://linkedin.com/in/your-profile
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+encoding: utf-8
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-toc
+
+# Navigation
+header_pages:
+  - index.md
+  - articles.md
+  - about.md
+  - contact.md
+
+# Collections for articles
+collections:
+  articles:
+    output: true
+    permalink: /:collection/:name/
+
+# Kramdown settings for better code highlighting
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
+
+# SEO and Analytics
+google_analytics: # GA-XXXXXXXXX-X (добавьте при необходимости)
+google_site_verification: # добавьте verification код
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - scripts/
+  - README.md
+
+# Featured articles (для главной страницы)
+featured_articles:
+  - title: "5 критических ошибок при настройке Postfix"
+    url: "/articles/postfix-critical-mistakes/"
+    excerpt: "Разбираем частые ошибки конфигурации, которые отправляют письма в спам"
+    category: "mail-servers"
+    tags: ["postfix", "mail", "security"]
+    read_time: "15 мин"
+    difficulty: "intermediate"
+
+# Categories
+categories:
+  - name: "mail-servers"
+    display: "📧 Почтовые серверы"
+    color: "#0366d6"
+  - name: "security"  
+    display: "🔒 Безопасность"
+    color: "#28a745"
+  - name: "monitoring"
+    display: "📊 Мониторинг" 
+    color: "#ffc107"
+  - name: "web-servers"
+    display: "🌐 Web-серверы"
+    color: "#dc3545"
