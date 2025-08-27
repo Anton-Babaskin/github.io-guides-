@@ -52,8 +52,8 @@
 
 ```bash
 # Клонируем репозиторий
-git clone https://github.com/Anton-Babaskin/github.io-guides.git
-cd github.io-guides
+git clone https://github.com/Anton-Babaskin/github.io-guides-.git
+cd github.io-guides-
 
 # Изучаем статьи
 ls -la *.md
@@ -105,13 +105,13 @@ ls -la *.md
 
 ## 📊 Статистика
 
-![GitHub stars](https://img.shields.io/github/stars/Anton-Babaskin/github.io-guides?style=social)
-![GitHub forks](https://img.shields.io/github/forks/Anton-Babaskin/github.io-guides?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/Anton-Babaskin/github.io-guides?style=social)
+![GitHub stars](https://img.shields.io/github/stars/Anton-Babaskin/github.io-guides-?style=social)
+![GitHub forks](https://img.shields.io/github/forks/Anton-Babaskin/github.io-guides-?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/Anton-Babaskin/github.io-guides-?style=social)
 
-![GitHub issues](https://img.shields.io/github/issues/Anton-Babaskin/github.io-guides)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/Anton-Babaskin/github.io-guides)
-![Last commit](https://img.shields.io/github/last-commit/Anton-Babaskin/github.io-guides)
+![GitHub issues](https://img.shields.io/github/issues/Anton-Babaskin/github.io-guides-)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/Anton-Babaskin/github.io-guides-)
+![Last commit](https://img.shields.io/github/last-commit/Anton-Babaskin/github.io-guides-)
 
 ---
 
