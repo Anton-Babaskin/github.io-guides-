@@ -1,151 +1,104 @@
 # 🛠️ System Administration Guides
 
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
-![Postfix](https://img.shields.io/badge/Postfix-Mail%20Server-blue?style=for-the-badge&logo=mail.ru)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen?style=for-the-badge)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black) ![Postfix](https://img.shields.io/badge/Postfix-Mail%20Server-blue?style=for-the-badge&logo=mail.ru) ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge) ![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen?style=for-the-badge)
 
-> **Коллекция практических руководств для системных администраторов**  
-> Реальные решения для production-серверов, основанные на 15+ летнем опыте
+> **Language**: English | [Русский](README.ru.md)
 
----
+A collection of practical guides for system administrators  
+Real solutions for production servers, based on 15+ years of experience
 
-## 📖 Статьи
+## 📚 Articles
 
-### 📧 **Почтовые серверы**
-- [**5 критических ошибок при настройке Postfix**](./postfix-critical-mistakes.md) 🔥  
-  *Основные проблемы конфигурации и их решения*
+### 📧 Mail Servers
+- [5 Critical Mistakes When Setting Up Postfix](postfix-critical-mistakes.md) 🔥  
+  *Common configuration problems and their solutions*
 
-### 🔒 **Безопасность** *(планируется)*
-- Настройка fail2ban для защиты SSH
-- Мониторинг безопасности с помощью OSSEC
+### 🔒 Security *(planned)*
+- fail2ban configuration for SSH protection
+- Security monitoring with OSSEC
 
-### 📊 **Мониторинг** *(планируется)*  
-- Zabbix: от установки до продвинутых триггеров
-- Grafana + Prometheus для системного мониторинга
+### 📊 Monitoring *(planned)*  
+- Zabbix: from installation to advanced triggers
+- Grafana + Prometheus for system monitoring
 
-### 🌐 **Web-серверы** *(планируется)*
-- Nginx: оптимизация производительности
-- SSL/TLS: современные практики безопасности
+### 🌐 Web Servers *(planned)*
+- Nginx: performance optimization  
+- SSL/TLS: modern security practices
 
----
+## 💡 About the Project
 
-## 🎯 О проекте
+This repository was created for system administrators who need:
 
-Этот репозиторий создан для **системных администраторов**, которым нужны:
+- ✅ **Proven solutions** to real problems
+- ✅ **Production-ready configurations** 
+- ✅ **Detailed explanations** of each step
+- ✅ **Troubleshooting guides** for quick diagnostics
 
-- ✅ **Проверенные решения** реальных проблем
-- ✅ **Готовые конфигурации** для production
-- ✅ **Подробные объяснения** каждого шага
-- ✅ **Troubleshooting guides** для быстрой диагностики
+## 🎯 Principles
 
-### 💡 Принципы
+- **Practice only** - no theory without application
+- **Production-ready** - all configurations tested in production environments  
+- **Security first** - modern protection standards
+- **Automation** - scripts and ready-to-use solutions
 
-- **Только практика** - никакой теории без применения
-- **Production-ready** - все конфигурации протестированы в боевых условиях
-- **Безопасность прежде всего** - современные стандарты защиты
-- **Автоматизация** - скрипты и готовые решения
-
----
-
-## 🚀 Быстрый старт
+## 🚀 Quick Start
 
 ```bash
-# Клонируем репозиторий
+# Clone the repository
 git clone https://github.com/Anton-Babaskin/github.io-guides-.git
 cd github.io-guides-
 
-# Изучаем статьи
+# Browse articles
 ls -la *.md
 ```
 
----
+## 📋 Categories
 
-## 🏷️ Категории
-
-| Категория | Описание | Статус |
-|-----------|----------|--------|
-| 📧 **Mail Servers** | Postfix, Dovecot, антиспам | ✅ В разработке |
-| 🔒 **Security** | Защита серверов, мониторинг | 📋 Планируется |
-| 📊 **Monitoring** | Zabbix, Grafana, алерты | 📋 Планируется |
-| 🌐 **Web Servers** | Nginx, Apache, оптимизация | 📋 Планируется |
-| 🐧 **Linux Admin** | Системное администрирование | 📋 Планируется |
-
----
+| Category | Description | Status |
+|----------|-------------|--------|
+| 📧 Mail Servers | Postfix, Dovecot, anti-spam | ✅ In development |
+| 🔒 Security | Server protection, monitoring | 📋 Planned |
+| 📊 Monitoring | Zabbix, Grafana, alerts | 📋 Planned |
+| 🌐 Web Servers | Nginx, Apache, optimization | 📋 Planned |
+| 🐧 Linux Admin | System administration | 📋 Planned |
 
 ## 🤝 Contributing
 
-Приветствуются любые улучшения! Вот как можно помочь:
+Any improvements are welcome! Here's how you can help:
 
-### 🐛 Нашли ошибку?
-- Создайте [**Issue**](../../issues/new) с описанием проблемы
-- Укажите в какой статье/разделе ошибка
-- Приложите скриншот если нужно
+### 🐛 Report Issues
+- Create an [Issue](https://github.com/Anton-Babaskin/github.io-guides-/issues/new) describing the problem
+- Specify which article/section contains the error
+- Include screenshots if needed
 
-### 💡 Есть идея для статьи?
-- Откройте [**Discussion**](../../discussions) для обсуждения
-- Опишите тему и почему она будет полезна
-- Можете предложить структуру статьи
+### 💬 Suggest New Topics  
+- Open a [Discussion](https://github.com/Anton-Babaskin/github.io-guides-/discussions) to discuss
+- Describe the topic and why it would be useful
+- You can suggest article structure
 
-### 📝 Хотите написать статью?
-1. **Fork** репозитория  
-2. Создайте новую ветку: `git checkout -b feature/new-article`
-3. Добавьте статью в markdown формате
-4. Обновите README.md (добавьте ссылку в раздел "Статьи")
-5. Создайте **Pull Request**
+### ✍️ Submit Articles
+1. Fork the repository
+2. Create a new branch:
+   ```bash
+   git checkout -b feature/new-article
+   ```
+3. Add your article in markdown format
+4. Update README.md (add link in "Articles" section)
+5. Create a Pull Request
 
-### ✨ Стандарты для статей
-- Используйте эмодзи для заголовков
-- Добавляйте блоки кода с подсветкой синтаксиса  
-- Включайте практические примеры
-- Описывайте не только "как", но и "почему"
-- Добавляйте troubleshooting секции
+### 📝 Writing Guidelines
+- Use emojis for headings
+- Add code blocks with syntax highlighting
+- Include practical examples
+- Explain not only "how" but also "why"
+- Add troubleshooting sections
 
----
+## 🌍 Available Languages
 
-## 📊 Статистика
+- **English** (current)
+- [**Русский**](README.ru.md) - Russian version
 
-![GitHub stars](https://img.shields.io/github/stars/Anton-Babaskin/github.io-guides-?style=social)
-![GitHub forks](https://img.shields.io/github/forks/Anton-Babaskin/github.io-guides-?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/Anton-Babaskin/github.io-guides-?style=social)
+## 📄 License
 
-![GitHub issues](https://img.shields.io/github/issues/Anton-Babaskin/github.io-guides-)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/Anton-Babaskin/github.io-guides-)
-![Last commit](https://img.shields.io/github/last-commit/Anton-Babaskin/github.io-guides-)
-
----
-
-## 📞 Контакты
-
-<div align="center">
-
-**Антон Бабаскин**  
-*System Administrator с 15+ летним опытом*
-
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Anton-Babaskin)
-[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/s3nior_anykey)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:me@fy-consulting.com)
-
-</div>
-
----
-
-## 📜 Лицензия
-
-Этот проект распространяется под лицензией **MIT**. 
-Подробности в файле [LICENSE](LICENSE).
-
----
-
-<div align="center">
-
-### ⭐ Если материал оказался полезным, поставьте звездочку репозиторию!
-
-*Помогите другим системным администраторам найти эти решения*
-
----
-
-**Последнее обновление:** Август 2025  
-**Следующая статья:** Настройка мониторинга Postfix с Telegram-уведомлениями
-
-</div
+This project is distributed under the MIT License.  
+See [LICENSE](LICENSE) for details.
