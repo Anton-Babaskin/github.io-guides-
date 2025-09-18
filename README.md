@@ -12,7 +12,7 @@ Production-tested solutions from real-world experience
 ### 📧 Mail Servers
 - [5 Critical Mistakes When Setting Up Postfix](postfix-critical-mistakes.md) 🔥  
   Common configuration issues and fixes
-- [Why Your Emails Go to Spam After Server Migration](why-your-emails-go-to-spam-after-server-migration.md)  
+- [Why Your Emails Go to Spam After Server Migration](why-emails-go-to-spam-after-migration.md)  
   Email delivery troubleshooting after migration
 - [Mail Server Security: Complete Hardening Guide](mail-server-security-guide.md) ⚡  
   SPF, DKIM, DMARC, Postgrey, TLS, and advanced protection
