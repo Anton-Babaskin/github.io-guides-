@@ -12,6 +12,8 @@ Production-tested solutions from real-world experience
 ### 📧 Mail Servers
 - [5 Critical Mistakes When Setting Up Postfix](postfix-critical-mistakes.md) 🔥  
   Common configuration issues and fixes
+- [Why Your Emails Go to Spam After Server Migration](why-your-emails-go-to-spam-after-server-migration.md)  
+  Email delivery troubleshooting after migration
 
 ### 🔒 Security *(planned)*
 - fail2ban configuration for SSH protection
