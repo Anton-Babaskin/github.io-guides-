@@ -50,8 +50,8 @@ This repository contains guides for system administrators who need:
 
 ```bash
 # Clone the repository
-git clone https://github.com/Anton-Babaskin/github.io-guides-.git
-cd github.io-guides-
+git clone https://github.com/Anton-Babaskin/sysadmins-guides.git
+cd sysadmins-guides
 
 # Browse articles
 ls -la *.md
@@ -72,12 +72,12 @@ ls -la *.md
 Looking to improve the guides? Here's how:
 
 ### 🐛 Found an issue?
-- Open an [Issue](https://github.com/Anton-Babaskin/github.io-guides-/issues/new)
+- Create an [Issue](https://github.com/Anton-Babaskin/sysadmins-guides/issues/new)
 - Mention the specific guide/section
 - Screenshots help
 
 ### 💡 Got ideas?  
-- Start a [Discussion](https://github.com/Anton-Babaskin/github.io-guides-/discussions)
+- Start a [Discussion](https://github.com/Anton-Babaskin/sysadmins-guides/discussions)
 - Explain why it's useful
 - Suggest structure if you have ideas
 
