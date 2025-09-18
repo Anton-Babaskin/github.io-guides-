@@ -14,10 +14,13 @@ Production-tested solutions from real-world experience
   Common configuration issues and fixes
 - [Why Your Emails Go to Spam After Server Migration](why-your-emails-go-to-spam-after-server-migration.md)  
   Email delivery troubleshooting after migration
+- [Mail Server Security: Complete Hardening Guide](mail-server-security-guide.md) ⚡  
+  SPF, DKIM, DMARC, Postgrey, TLS, and advanced protection
 
-### 🔒 Security *(planned)*
-- fail2ban configuration for SSH protection
-- Security monitoring with OSSEC
+### 🔒 Security
+- Security configurations and server hardening
+- fail2ban and intrusion detection
+- SSL/TLS best practices
 
 ### 📊 Monitoring *(planned)*  
 - Zabbix: from installation to advanced triggers
@@ -59,7 +62,7 @@ ls -la *.md
 | Category | Description | Status |
 |----------|-------------|--------|
 | 📧 Mail Servers | Postfix, Dovecot, anti-spam | ✅ In development |
-| 🔒 Security | Server protection, monitoring | 📋 Planned |
+| 🔒 Security | Server protection, monitoring | ✅ In development |
 | 📊 Monitoring | Zabbix, Grafana, alerts | 📋 Planned |
 | 🌐 Web Servers | Nginx, Apache, optimization | 📋 Planned |
 | 🐧 Linux Admin | System administration | 📋 Planned |
