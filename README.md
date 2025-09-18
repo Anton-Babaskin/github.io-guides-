@@ -4,14 +4,14 @@
 
 > **Language**: English | [Русский](README.ru.md)
 
-A collection of practical guides for system administrators  
-Real solutions for production servers, based on 15+ years of experience
+Practical guides for system administrators  
+Production-tested solutions from real-world experience
 
 ## 📚 Articles
 
 ### 📧 Mail Servers
 - [5 Critical Mistakes When Setting Up Postfix](postfix-critical-mistakes.md) 🔥  
-  *Common configuration problems and their solutions*
+  Common configuration issues and fixes
 
 ### 🔒 Security *(planned)*
 - fail2ban configuration for SSH protection
@@ -27,19 +27,19 @@ Real solutions for production servers, based on 15+ years of experience
 
 ## 💡 About the Project
 
-This repository was created for system administrators who need:
+This repository contains guides for system administrators who need:
 
-- ✅ **Proven solutions** to real problems
-- ✅ **Production-ready configurations** 
-- ✅ **Detailed explanations** of each step
-- ✅ **Troubleshooting guides** for quick diagnostics
+- ✅ **Battle-tested solutions** 
+- ✅ **Production configurations** 
+- ✅ **Step-by-step instructions**
+- ✅ **Quick troubleshooting**
 
 ## 🎯 Principles
 
-- **Practice only** - no theory without application
-- **Production-ready** - all configurations tested in production environments  
-- **Security first** - modern protection standards
-- **Automation** - scripts and ready-to-use solutions
+- **Hands-on approach** - skip the theory, get results
+- **Production-tested** - configs used in live environments
+- **Security-focused** - current best practices
+- **Automation-ready** - scripts included
 
 ## 🚀 Quick Start
 
@@ -64,19 +64,19 @@ ls -la *.md
 
 ## 🤝 Contributing
 
-Any improvements are welcome! Here's how you can help:
+Looking to improve the guides? Here's how:
 
-### 🐛 Report Issues
-- Create an [Issue](https://github.com/Anton-Babaskin/github.io-guides-/issues/new) describing the problem
-- Specify which article/section contains the error
-- Include screenshots if needed
+### 🐛 Found an issue?
+- Open an [Issue](https://github.com/Anton-Babaskin/github.io-guides-/issues/new)
+- Mention the specific guide/section
+- Screenshots help
 
-### 💬 Suggest New Topics  
-- Open a [Discussion](https://github.com/Anton-Babaskin/github.io-guides-/discussions) to discuss
-- Describe the topic and why it would be useful
-- You can suggest article structure
+### 💡 Got ideas?  
+- Start a [Discussion](https://github.com/Anton-Babaskin/github.io-guides-/discussions)
+- Explain why it's useful
+- Suggest structure if you have ideas
 
-### ✍️ Submit Articles
+### ✍️ Want to contribute?
 1. Fork the repository
 2. Create a new branch:
    ```bash
